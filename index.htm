@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head><link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"></head>
+<body>
+
+<div ng-app="" ng-controller="customersController">
+<table class="table table-striped">
+  <thead>
+	  <tr>    
+    <th>Name</th>
+    <th>Country</th>
+    <th>Edit</th>
+  </tr>
+  </thead>
+  <tbody>
+	  <tr ng-repeat="x in names">
+    <td>{{ x.Name }}</td>
+    <td>{{ x.Country }}</td>
+    <td>
+      <button class="btn" ng-click="editName(x.Name)">
+      <span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Edit
+      </button>
+    </td>    
+  </tr></tbody>
+</table>
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+<script>
+function customersController($scope,$http) {
+    $http.get("http://www.w3schools.com/website/Customers_JSON.php")
+    .success(function(response) {$scope.names = response;});
+    
+    $scope.editName = function()
+    {
+	console.log('DEBUG ');
+	console.log($scope);
+	};
+        
+}
+</script>
+
+</body>
+</html>
