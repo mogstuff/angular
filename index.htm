@@ -1,44 +1,18 @@
 <!DOCTYPE html>
-<html>
-	<head><link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"></head>
+<html ng-app="myApp">
+	<head>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    </head>
 <body>
 
-<div ng-app="" ng-controller="customersController">
-<table class="table table-striped">
-  <thead>
-	  <tr>    
-    <th>Name</th>
-    <th>Country</th>
-    <th>Edit</th>
-  </tr>
-  </thead>
-  <tbody>
-	  <tr ng-repeat="x in names">
-    <td>{{ x.Name }}</td>
-    <td>{{ x.Country }}</td>
-    <td>
-      <button class="btn" ng-click="editName(x.Name)">
-      <span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Edit
-      </button>
-    </td>    
-  </tr></tbody>
-</table>
-</div>
-
+    <div ng-include='"templates/header.html"'></div>    
+    <p style="height:2em;"></p>
+    <div ng-view></div>    
+    <div ng-include='"templates/footer.html"'></div>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
-<script>
-function customersController($scope,$http) {
-    $http.get("http://www.w3schools.com/website/Customers_JSON.php")
-    .success(function(response) {$scope.names = response;});
-    
-    $scope.editName = function()
-    {
-	console.log('DEBUG ');
-	console.log($scope);
-	};
-        
-}
-</script>
-
+<script  src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-route.min.js"></script>  
+<script src="myApp.js"></script>
 </body>
 </html>
