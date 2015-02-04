@@ -1,0 +1,16 @@
+  <div class="container">
+            <div class="row">
+                
+                <h1>Recipes List</h1>
+                
+<div ng-controller="RecipesCtrl">
+	<h4>Recipes</h4>
+
+	<div id="list-container">
+		<table class="table table-hover table-striped table-bordered todolist">
+			<tr ng-repeat="recipe in Recipes.record" id="row_{{recipe.id}}">				
+				<td id="item_{{recipe.id}}" style="" >{{recipe.Name}}</td>
+			</tr>
+		</table>
+	</div>	
+</div>
